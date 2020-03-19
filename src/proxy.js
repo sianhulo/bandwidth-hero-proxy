@@ -43,6 +43,8 @@ function proxy(req, res) {
 
       if (shouldCompress(req)) {
         console.log("entered compress")
+        console.log("response status proxy")
+        console.log(res.status)
         compress(req, res, buffer)
       } else {
         console.log("entered bypass")

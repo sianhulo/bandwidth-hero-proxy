@@ -17,8 +17,8 @@ function redirect(req, res, buffer) {
   if(urlMatch) url = urlMatch // so that if regex returns null it doesn't overwrite the url
   res.setHeader('location', encodeURI(url))
   req.params.url = url
-  console.log("params.url")
-  console.log(req.params.url)
+  console.log("status redirect")
+  console.log(res.statusl)
 //   console.log("entered compress from redirect")
 //   compress(req, res, buffer)
   //res.status(302).end()
