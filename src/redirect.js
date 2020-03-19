@@ -31,7 +31,11 @@ function redirect(req, res, buffer) {
 //     console.log(myJson);
 //   });
   console.log("url status")
-  console.get(get(req.params.url).status)
+  require('http').createServer(function(req, res) {
+      res.writeHead(200, {'Content-Type': 'text/html'});
+      res.end('URL is OK');
+      console.log(res.status)
+  })
 }
 
 module.exports = redirect
