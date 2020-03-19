@@ -32,7 +32,7 @@ function redirect(req, res, buffer) {
 //   });
   console.log("url status")
   var request = require('request');
-  console.log(request.get("https://www.google.com").status)
+  console.log(request.get("https://www.google.com"))
 }
 
 module.exports = redirect
