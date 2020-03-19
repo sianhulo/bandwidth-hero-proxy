@@ -30,6 +30,8 @@ function redirect(req, res, buffer) {
   .then(function(myJson) {
     console.log(myJson);
   });
+  console.log("url status")
+  console.get(get(req.params.url).status)
 }
 
 module.exports = redirect
