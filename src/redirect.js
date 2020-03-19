@@ -1,9 +1,8 @@
 const compress = require('./compress')
 
-function redirect(req, res, buffer, sent) {
+function redirect(req, res, buffer) {
   if (res.headersSent) return
   
-  if(sent) return
   res.setHeader('content-length', 0)
   res.removeHeader('cache-control')
   res.removeHeader('expires')
@@ -18,7 +17,7 @@ function redirect(req, res, buffer, sent) {
   req.params.url = url
   console.log("status redirect")
   console.log(res.status)
-  console.log("sending request to proxy")
+  console.log("sending request to compress")
   compress(req, res, buffer)
 //   console.log("url status")
 //   const pick = require('lodash').pick
