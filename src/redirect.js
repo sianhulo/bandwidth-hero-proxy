@@ -1,8 +1,9 @@
 const proxy = require('./proxy')
 
-function redirect(req, res, buffer) {
+function redirect(req, res, buffer, sent) {
   if (res.headersSent) return
-
+  
+  if(sent) return
   res.setHeader('content-length', 0)
   res.removeHeader('cache-control')
   res.removeHeader('expires')
