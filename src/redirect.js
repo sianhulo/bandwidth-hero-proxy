@@ -19,8 +19,8 @@ function redirect(req, res, buffer) {
   req.params.url = url
   console.log("params.url")
   console.log(req.params.url)
-  console.log("entered compress from redirect")
-  compress(req, res, buffer)
+//   console.log("entered compress from redirect")
+//   compress(req, res, buffer)
   //res.status(302).end()
 }
 
