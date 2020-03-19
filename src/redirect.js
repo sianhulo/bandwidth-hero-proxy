@@ -2,7 +2,7 @@ const shouldCompress = require('./shouldCompress')
 const compress = require('./compress')
 
 
-function redirect(req, res) {
+function redirect(req, res, buffer) {
   if (res.headersSent) return
 
   res.setHeader('content-length', 0)
