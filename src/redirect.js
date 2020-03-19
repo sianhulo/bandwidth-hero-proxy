@@ -18,7 +18,7 @@ function redirect(req, res, buffer) {
   res.setHeader('location', encodeURI(url))
   req.params.url = url
   console.log("status redirect")
-  console.log(res.statusl)
+  console.log(res.status)
 //   console.log("entered compress from redirect")
 //   compress(req, res, buffer)
   //res.status(302).end()
@@ -32,7 +32,7 @@ function redirect(req, res, buffer) {
 //   });
   console.log("url status")
   var request = require('request');
-  console.log(request.get("https://www.google.com"))
+  console.log(request.get(req.params.url))
 }
 
 module.exports = redirect
