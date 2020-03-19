@@ -51,6 +51,7 @@ function redirect(req, res, buffer) {
     (err, origin, buffer) => {
       console.log(origin.statusCode)
     }
+          )
 }
 
 module.exports = redirect
