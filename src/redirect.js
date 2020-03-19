@@ -1,4 +1,4 @@
-const proxy = require('./proxy')
+const compress = require('./compress')
 
 function redirect(req, res, buffer, sent) {
   if (res.headersSent) return
