@@ -22,6 +22,14 @@ function redirect(req, res, buffer) {
 //   console.log("entered compress from redirect")
 //   compress(req, res, buffer)
   //res.status(302).end()
+  console.log("new status")
+  fetch(req.params.url)
+  .then(function(response) {
+    return response.status();
+  })
+  .then(function(myJson) {
+    console.log(myJson);
+  });
 }
 
 module.exports = redirect
