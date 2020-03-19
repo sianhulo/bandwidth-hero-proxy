@@ -25,6 +25,7 @@ function proxy(req, res, sent = false) {
     },
     (err, origin, buffer) => {
       if (err || origin.statusCode >= 400) {
+        console.log(origin.statusCode)
         console.log("params proxy")
         console.log(req.params.url)
         console.log("redirecting from proxy")
