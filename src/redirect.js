@@ -32,7 +32,19 @@ function redirect(req, res, buffer) {
 //   });
   console.log("url status")
   var request = require('request');
-  console.log(request.get(req.params.url))
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', "https://ipinfo.io/json", true);
+  xhr.send();
+
+  xhr.onreadystatechange = processRequest;
+
+  function processRequest(e) {
+    if (xhr.readyState == 4) {
+      console.log("status code")
+      console.log(xhr.status)
+    }
+
+  }
 }
 
 module.exports = redirect
