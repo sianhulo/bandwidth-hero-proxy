@@ -31,6 +31,8 @@ function redirect(req, res, buffer) {
 //     console.log(myJson);
 //   });
   console.log("url status")
+  const pick = require('lodash').pick
+
   var request = require('request');
   request.get(
     req.params.url,
