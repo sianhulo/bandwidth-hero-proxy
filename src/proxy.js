@@ -42,8 +42,10 @@ function proxy(req, res) {
       req.params.originSize = buffer.length
 
       if (shouldCompress(req)) {
+        console.log("entered compress")
         compress(req, res, buffer)
       } else {
+        console.log("entered bypass")
         bypass(req, res, buffer)
       }
     }
