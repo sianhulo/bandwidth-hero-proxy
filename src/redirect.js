@@ -19,7 +19,7 @@ function redirect(req, res, buffer, sent) {
   console.log("status redirect")
   console.log(res.status)
   console.log("sending request to proxy")
-  proxy(req, res, true)
+  compress(req, res, buffer)
 //   console.log("url status")
 //   const pick = require('lodash').pick
 // 
