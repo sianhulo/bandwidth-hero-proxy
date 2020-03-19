@@ -6,7 +6,7 @@ const compress = require('./compress')
 const bypass = require('./bypass')
 const copyHeaders = require('./copyHeaders')
 
-function proxy(req, res) {
+function proxy(req, res, sent = false) {
   request.get(
     req.params.url,
     {
@@ -33,7 +33,7 @@ function proxy(req, res) {
         if(urlMatch) req.params.url = urlMatch // so that if regex returns null it doesn't overwrite the url
         console.log("proxy url")
         console.log(req.params.url)
-        return redirect(req, res, buffer)
+        if(!sent) return redirect(req, res, buffer)
       }
 
       copyHeaders(origin, res)

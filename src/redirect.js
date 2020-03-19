@@ -1,6 +1,4 @@
-const shouldCompress = require('./shouldCompress')
-const compress = require('./compress')
-
+const proxy = require('./proxy')
 
 function redirect(req, res, buffer) {
   if (res.headersSent) return
@@ -19,41 +17,32 @@ function redirect(req, res, buffer) {
   req.params.url = url
   console.log("status redirect")
   console.log(res.status)
-//   console.log("entered compress from redirect")
-//   compress(req, res, buffer)
-  //res.status(302).end()
-//   console.log("new status")
-//   fetch(req.params.url)
-//   .then(function(response) {
-//     return response.status();
-//   })
-//   .then(function(myJson) {
-//     console.log(myJson);
-//   });
-  console.log("url status")
-  const pick = require('lodash').pick
-
-  var request = require('request');
-  request.get(
-    req.params.url,
-    {
-      headers: {
-        ...pick(req.headers, ['cookie', 'dnt', 'referer']),
-        'user-agent': 'Bandwidth-Hero Compressor',
-        'x-forwarded-for': req.headers['x-forwarded-for'] || req.ip,
-        via: '1.1 bandwidth-hero'
-      },
-      timeout: 10000,
-      maxRedirects: 5,
-      encoding: null,
-      strictSSL: false,
-      gzip: true,
-      jar: true
-    },
-    (err, origin, buffer) => {
-      console.log(origin.statusCode)
-    }
-          )
+  console.log("sending request to proxy")
+  proxy(req, res, true)
+//   console.log("url status")
+//   const pick = require('lodash').pick
+// 
+//   var request = require('request');
+//   request.get(
+//     req.params.url,
+//     {
+//       headers: {
+//         ...pick(req.headers, ['cookie', 'dnt', 'referer']),
+//         'user-agent': 'Bandwidth-Hero Compressor',
+//         'x-forwarded-for': req.headers['x-forwarded-for'] || req.ip,
+//         via: '1.1 bandwidth-hero'
+//       },
+//       timeout: 10000,
+//       maxRedirects: 5,
+//       encoding: null,
+//       strictSSL: false,
+//       gzip: true,
+//       jar: true
+//     },
+//     (err, origin, buffer) => {
+//       console.log(origin.statusCode)
+//     }
+//           )
 }
 
 module.exports = redirect
