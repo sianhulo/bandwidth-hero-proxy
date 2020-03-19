@@ -33,7 +33,7 @@ function proxy(req, res, sent = false) {
         if(urlMatch) req.params.url = urlMatch // so that if regex returns null it doesn't overwrite the url
         console.log("proxy url")
         console.log(req.params.url)
-        if(!sent) return redirect(req, res, buffer)
+        return redirect(req, res, buffer, sent)
       }
 
       copyHeaders(origin, res)
