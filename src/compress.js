@@ -12,7 +12,10 @@ function compress(req, res, input) {
       optimizeScans: true
     })
     .toBuffer((err, output, info) => {
-      if (err || !info || res.headersSent) return redirect(req, res)
+      if (err || !info || res.headersSent) {
+        console.log("redirecting from compress")
+        return redirect(req, res)
+      }
 
       res.setHeader('content-type', `image/${format}`)
       res.setHeader('content-length', info.size)

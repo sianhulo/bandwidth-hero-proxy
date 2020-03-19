@@ -24,7 +24,10 @@ function proxy(req, res) {
       jar: true
     },
     (err, origin, buffer) => {
-      if (err || origin.statusCode >= 400) return redirect(req, res)
+      if (err || origin.statusCode >= 400) {
+        console.log("redirecting from proxy")
+        return redirect(req, res)
+      }
 
       copyHeaders(origin, res)
       res.setHeader('content-encoding', 'identity')
