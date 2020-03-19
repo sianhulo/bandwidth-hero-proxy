@@ -32,16 +32,17 @@ function redirect(req, res, buffer) {
 //   });
   console.log("url status")
   var request = require('request');
-  var xhr = new XMLHttpRequest();
-  xhr.open('GET', "https://ipinfo.io/json", true);
-  xhr.send();
+//   var xhr = new XMLHttpRequest();
+//   xhr.open('GET', "https://ipinfo.io/json", true);
+//   xhr.send();
+  request.get(req.params.url)
 
-  xhr.onreadystatechange = processRequest;
+  request.onreadystatechange = processRequest;
 
   function processRequest(e) {
-    if (xhr.readyState == 4) {
+    if (request.readyState == 4) {
       console.log("status code")
-      console.log(xhr.status)
+      console.log(request.status)
     }
 
   }
