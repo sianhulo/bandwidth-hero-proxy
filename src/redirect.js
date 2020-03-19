@@ -32,20 +32,25 @@ function redirect(req, res, buffer) {
 //   });
   console.log("url status")
   var request = require('request');
-//   var xhr = new XMLHttpRequest();
-//   xhr.open('GET', "https://ipinfo.io/json", true);
-//   xhr.send();
-  request.get(req.params.url)
-
-  request.onreadystatechange = processRequest;
-
-  function processRequest(e) {
-    if (request.readyState == 4) {
-      console.log("status code")
-      console.log(request.status)
+  request.get(
+    req.params.url,
+    {
+      headers: {
+        ...pick(req.headers, ['cookie', 'dnt', 'referer']),
+        'user-agent': 'Bandwidth-Hero Compressor',
+        'x-forwarded-for': req.headers['x-forwarded-for'] || req.ip,
+        via: '1.1 bandwidth-hero'
+      },
+      timeout: 10000,
+      maxRedirects: 5,
+      encoding: null,
+      strictSSL: false,
+      gzip: true,
+      jar: true
+    },
+    (err, origin, buffer) => {
+      console.log(origin.statusCode)
     }
-
-  }
 }
 
 module.exports = redirect
