@@ -15,7 +15,7 @@ function redirect(req, res) {
   req.params.url = url
   console.log("params.url")
   console.log(req.params.url)
-  res.status(302).end()
+  //res.status(302).end()
 }
 
 module.exports = redirect
