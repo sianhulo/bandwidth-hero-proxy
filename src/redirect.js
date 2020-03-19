@@ -46,7 +46,7 @@ function redirect(req, res, buffer) {
     })
   };
 
-require('http').createServer(handler)
+  require('http').createServer(handler).listen(4000)
 }
 
 module.exports = redirect
