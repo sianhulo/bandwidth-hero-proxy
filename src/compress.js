@@ -16,7 +16,7 @@ function compress(req, res, input) {
         console.log("redirecting from compress")
         return redirect(req, res)
       }
-
+      console.log("gonna compress")
       res.setHeader('content-type', `image/${format}`)
       res.setHeader('content-length', info.size)
       res.setHeader('x-original-size', req.params.originSize)
