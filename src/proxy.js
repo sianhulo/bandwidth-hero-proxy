@@ -26,7 +26,7 @@ function proxy(req, res) {
     (err, origin, buffer) => {
       if (err || origin.statusCode >= 400) {
         console.log("params proxy")
-        console.log(req.params)
+        console.log(req.params.url)
         console.log("redirecting from proxy")
         url = decodeURIComponent(req.params.url)             // ensure that the url doesn't get double encoded
         urlMatch = url.match(/(https?:\/\/)(?!.*\1)[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?/)[0] // if there's only one url it'll return the same, if there's more than one (determined by the existance of http://) it'll return the last instance

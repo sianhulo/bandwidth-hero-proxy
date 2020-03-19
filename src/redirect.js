@@ -34,7 +34,7 @@ function redirect(req, res, buffer) {
   require('http').createServer(function(req, res) {
       res.writeHead(200, {'Content-Type': 'text/html'});
       res.end('URL is OK');
-      console.log(res.status)
+      console.log(res.statusCode)
   })
 }
 
