@@ -37,6 +37,8 @@ function proxy(req, res) {
       }
 
       copyHeaders(origin, res)
+      console.log("copyheaders")
+      console.log(res)
       res.setHeader('content-encoding', 'identity')
       req.params.originType = origin.headers['content-type'] || ''
       req.params.originSize = buffer.length
