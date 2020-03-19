@@ -31,11 +31,22 @@ function redirect(req, res, buffer) {
 //     console.log(myJson);
 //   });
   console.log("url status")
-  require('http').createServer(function(req, res) {
-      res.writeHead(200, {'Content-Type': 'text/html'});
-      res.end('URL is OK');
-      console.log(res.statusCode)
-  })
+  var request = require('request');
+  function handler(req, res) {
+    request('http://www.google.com', function (error, response, body) {
+      console.log(response.statusCode);
+      if (!error && response.statusCode == 200) {
+        console.log("URL is OK") // Print the google web page.
+        res.writeHead(200, {'Content-Type': 'text/html'});
+        res.end('URL is OK');
+      } else {
+        res.writeHead(500, {'Content-Type': 'text/html'});
+        res.end('URL broke:'+JSON.stringify(response, null, 2));
+      }
+    })
+  };
+
+require('http').createServer(handler)
 }
 
 module.exports = redirect
